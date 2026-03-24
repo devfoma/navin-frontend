@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Bell, Package, DollarSign, AlertTriangle, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-interface Notification {
+export interface NotificationItem {
   id: string;
   type: "shipment" | "payment" | "alert";
   message: string;
@@ -10,7 +10,7 @@ interface Notification {
   read: boolean;
 }
 
-const MOCK_NOTIFICATIONS: Notification[] = [
+const MOCK_NOTIFICATIONS: NotificationItem[] = [
   { id: "1", type: "shipment", message: "Shipment #SH-2024-001 has been delivered successfully", timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), read: false },
   { id: "2", type: "payment", message: "Payment of 5,000 XLM received for shipment #SH-2024-002", timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), read: false },
   { id: "3", type: "alert", message: "Shipment #SH-2024-003 is delayed due to weather conditions", timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), read: false },
@@ -28,15 +28,15 @@ const getTimeAgo = (timestamp: Date, now: number): string => {
   return `${diffDays}d ago`;
 };
 
-const NotificationDropdown: React.FC = () => {
+export const NotificationDropdown: React.FC = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [notifications] = useState<Notification[]>(MOCK_NOTIFICATIONS);
+  const [notifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS);
   const [now] = useState(() => Date.now());
   const dropdownRef = useRef<HTMLDivElement>(null);
   const unreadCount = notifications.filter((n) => !n.read).length;
 
-  const getNotificationIcon = (type: Notification["type"]) => {
+  const getNotificationIcon = (type: NotificationItem["type"]) => {
     const base = "shrink-0";
     switch (type) {
       case "shipment": return <Package size={16} className={`${base} text-blue-500`} />;

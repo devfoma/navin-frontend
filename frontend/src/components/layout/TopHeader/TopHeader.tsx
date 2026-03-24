@@ -1,8 +1,8 @@
 import React from "react";
 import { Menu, Search } from "lucide-react";
-import NotificationDropdown from "../../notifications/NotificationDropdown/NotificationDropdown";
+import { NotificationDropdown } from "../../notifications/NotificationDropdown/NotificationDropdown";
 
-interface TopHeaderProps {
+export interface TopHeaderProps {
   toggleSidebar: () => void;
 }
 

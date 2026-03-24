@@ -9,9 +9,8 @@ import {
   Settings,
   HelpCircle,
 } from "lucide-react";
-import "./Sidebar.css";
 
-interface SidebarProps {
+export interface SidebarProps {
   isOpen: boolean;
   isCollapsed: boolean;
   onClose: () => void;
