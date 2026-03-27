@@ -345,6 +345,7 @@ import type { ShipmentProps } from '@types/shipment';
 
 ## Related Documents
 
+- [`VERIFICATION_UI_STATES.md`](./VERIFICATION_UI_STATES.md) — Verification badge states, Stellar Explorer linking rules, and graceful failure behavior for on-chain data
 - [`COMPONENT_CONVENTIONS.md`](./COMPONENT_CONVENTIONS.md) — TypeScript, exports, props, and dead code rules
 - [`TAILWIND_MIGRATION.md`](./TAILWIND_MIGRATION.md) — Step-by-step CSS → Tailwind conversion guide
 - [`TAILWIND_BEFORE_AFTER.md`](./TAILWIND_BEFORE_AFTER.md) — Side-by-side migration examples
