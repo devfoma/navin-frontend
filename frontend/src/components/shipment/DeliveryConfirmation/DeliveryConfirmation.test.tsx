@@ -1,3 +1,40 @@
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
+import DeliveryConfirmation from './DeliveryConfirmation';
+
+describe('DeliveryConfirmation', () => {
+  test('full user flow: open form, pick rating, add feedback, submit and show success', async () => {
+    const user = userEvent.setup();
+    const onConfirm = vi.fn().mockResolvedValue(undefined);
+
+    render(<DeliveryConfirmation shipmentId="SHP-1" status="delivered" onConfirm={onConfirm} />);
+
+    // Prompt shown
+    expect(screen.getByRole('button', { name: /Confirm Receipt/i })).toBeInTheDocument();
+
+    // Open form
+    await user.click(screen.getByRole('button', { name: /Confirm Receipt/i }));
+
+    // Select rating (4 stars)
+    const stars = screen.getAllByRole('radio');
+    await user.click(stars[3]);
+
+    // Fill feedback
+    const textarea = screen.getByPlaceholderText(/Share any comments about your delivery/i);
+    await user.type(textarea, 'Great delivery');
+
+    // Submit
+    await user.click(screen.getByRole('button', { name: /Submit Confirmation/i }));
+
+    // Wait for success UI
+    await screen.findByText(/Thank you for confirming!/i);
+
+    expect(onConfirm).toHaveBeenCalledTimes(1);
+    expect(onConfirm).toHaveBeenCalledWith('SHP-1', 4, 'Great delivery');
+  });
+});
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
