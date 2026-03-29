@@ -14,6 +14,9 @@ export type { EmptyStateProps, EmptyStateCTA } from './common/EmptyState';
 export { default as Modal } from './common/Modal';
 export type { ModalProps, ModalSize } from './common/Modal';
 
+export { default as StatusBadge } from './common/StatusBadge';
+export type { StatusBadgeProps, StatusBadgeStatus } from './common/StatusBadge';
+
 // Reusable UI primitives
 export { default as Button } from './Button';
 export type { ButtonProps, ButtonVariant, ButtonSize } from './Button';
