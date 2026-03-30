@@ -1,18 +1,6 @@
 // Common
-export { default as DataTable } from './common/DataTable';
-export type {
-  DataTableProps,
-  ColumnDef,
-  PaginationConfig,
-  DataTableEmptyState,
-  SortDirection,
-} from './common/DataTable';
-
 export { default as EmptyState } from './common/EmptyState';
 export type { EmptyStateProps, EmptyStateCTA } from './common/EmptyState';
-
-export { default as Modal } from './common/Modal';
-export type { ModalProps, ModalSize } from './common/Modal';
 
 // Reusable UI primitives
 export { default as Button } from './Button';
