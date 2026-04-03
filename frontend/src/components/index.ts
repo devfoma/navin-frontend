@@ -6,6 +6,8 @@ export { default as DataTable } from './common/DataTable';
 export type { DataTableProps, ColumnDef, PaginationConfig, DataTableEmptyState, SortDirection } from './common/DataTable';
 export { default as Pagination } from './common/Pagination';
 export type { PaginationProps } from './common/Pagination';
+export { default as Breadcrumb } from './common/Breadcrumb';
+export type { BreadcrumbProps, BreadcrumbItem } from './common/Breadcrumb';
 
 // Reusable UI primitives
 export { default as Button } from './Button';
